@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinuxAlignment"
+  short_description: "Enforce Linux 2.6 alignment gates"
+  default_prompt: "Use LinuxAlignment before changing Lite kernel code for Linux 2.6 alignment. Read the Linux reference first, produce a mapping ledger, check placement/naming/semantics/lifetime, and keep the change to one explicit difference."

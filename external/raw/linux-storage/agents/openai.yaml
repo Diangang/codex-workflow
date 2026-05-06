@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinuxStorage"
+  short_description: "Analyze and modify Linux kernel storage code"
+  default_prompt: "Use LinuxStorage to analyze or modify Linux kernel storage code with attention to I/O paths, locking, lifetimes, error handling, performance, and data integrity."

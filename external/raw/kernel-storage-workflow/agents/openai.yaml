@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kernel Storage Workflow"
+  short_description: "Linux 内核存储与 I/O 开发调试测试工作流"
+  default_prompt: "Use $kernel-storage-workflow to develop, backport, test, review, or debug Linux kernel storage and I/O changes."

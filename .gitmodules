@@ -1,0 +1,12 @@
+[submodule "external/raw/andrej-karpathy-skills"]
+	path = external/raw/andrej-karpathy-skills
+	url = git@github.com:forrestchang/andrej-karpathy-skills.git
+[submodule "external/raw/humanizer"]
+	path = external/raw/humanizer
+	url = https://github.com/blader/humanizer.git
+[submodule "external/raw/superpowers"]
+	path = external/raw/superpowers
+	url = https://github.com/obra/superpowers.git
+[submodule "external/raw/superpowers-zh"]
+	path = external/raw/superpowers-zh
+	url = https://github.com/jnMetaCode/superpowers-zh.git
