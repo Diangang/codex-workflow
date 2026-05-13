@@ -1,4 +1,4 @@
 interface:
   display_name: "工作流"
   short_description: "个人 Codex 总入口工作模式：按任务选择专属 skill，再叠加通用 skill"
-  default_prompt: "使用 $workflow，先按 router.md 选择专属 skill 和通用 skill；冲突时按 priority.md 专属优先。"
+  default_prompt: "使用 $workflow，先读 router.md，再按 routes/ 下的细分路由选择专属 skill 和通用 skill；冲突时按 priority.md 裁决。"

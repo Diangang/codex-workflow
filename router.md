@@ -1,6 +1,6 @@
 # 路由
 
-本文是 `workflow` 的入口路由。每个任务先选专属 skill，再叠加通用 skill；如果规则冲突，按 [priority.md](priority.md) 裁决。
+本文是 `workflow` 的入口路由。先选一个最具体、风险最高的主路由，再按需要叠加通用规则；冲突按 [priority.md](priority.md) 裁决。
 
 ## 基本规则
 
@@ -10,26 +10,27 @@
 - 外部原始资料只作为深读参考，不作为默认入口。
 - 任务跨多个领域时，先选最具体、风险最高的专属 skill。
 
-## 常用路由
+## 一级路由
 
-| 任务 | 专属 skill | 通用 skill | 需要时深读 |
-| --- | --- | --- | --- |
-| Lite/Linux 对齐、改 ABI/API/生命周期 | [specialized/linux-alignment.md](specialized/linux-alignment.md) | [common/operating.md](common/operating.md), [common/verification.md](common/verification.md) | `external/raw/linux-alignment/SKILL.md` |
-| Kernel storage 开发 | [specialized/kernel-storage-develop.md](specialized/kernel-storage-develop.md) | [common/operating.md](common/operating.md), [common/verification.md](common/verification.md), 可行时 [common/tdd.md](common/tdd.md) | `external/raw/kernel-storage-workflow/references/development.md`, `external/raw/linux-storage/SKILL.md` |
-| Kernel storage 调试 | [specialized/kernel-storage-debug.md](specialized/kernel-storage-debug.md) | [common/debugging.md](common/debugging.md), [common/verification.md](common/verification.md) | `external/raw/kernel-storage-workflow/references/problem-debugging.md`, `external/raw/linux-storage/SKILL.md` |
-| Kernel storage review | [specialized/kernel-storage-review.md](specialized/kernel-storage-review.md) | [common/review.md](common/review.md), [common/verification.md](common/verification.md), 中文场景加 [common/chinese-style.md](common/chinese-style.md) | `external/raw/kernel-storage-workflow/references/patch-review.md` |
-| Kernel storage backport | [specialized/kernel-storage-backport.md](specialized/kernel-storage-backport.md) | [common/operating.md](common/operating.md), [common/verification.md](common/verification.md) | `external/raw/kernel-storage-workflow/references/backport.md` |
-| Kernel storage 测试 | [specialized/kernel-storage-test.md](specialized/kernel-storage-test.md) | [common/verification.md](common/verification.md) | `external/raw/kernel-storage-workflow/references/testing.md` |
-| Kernel storage 性能 | [specialized/kernel-storage-performance.md](specialized/kernel-storage-performance.md) | [common/operating.md](common/operating.md), [common/verification.md](common/verification.md) | `external/raw/kernel-storage-workflow/references/performance-optimization.md` |
-| MCP 构建 | [specialized/mcp-builder.md](specialized/mcp-builder.md) | [common/operating.md](common/operating.md), [common/verification.md](common/verification.md), 多步任务加 [common/planning.md](common/planning.md) | `external/raw/superpowers-zh/skills/mcp-builder/SKILL.md` |
-| 非内核性能问题 | [specialized/non-kernel-performance.md](specialized/non-kernel-performance.md) | [common/operating.md](common/operating.md), [common/verification.md](common/verification.md) | 按项目技术栈选择原始资料 |
-| 通用开发 | 无 | [common/operating.md](common/operating.md), [common/verification.md](common/verification.md), 可行时 [common/tdd.md](common/tdd.md), 多步任务加 [common/planning.md](common/planning.md) | `external/raw/andrej-karpathy-skills/skills/karpathy-guidelines/SKILL.md`, `external/raw/superpowers-zh/skills/test-driven-development/SKILL.md` |
-| 通用调试 | 无 | [common/debugging.md](common/debugging.md), [common/verification.md](common/verification.md) | `external/raw/superpowers-zh/skills/systematic-debugging/SKILL.md` |
-| 通用 review | 无 | [common/review.md](common/review.md), [common/verification.md](common/verification.md), 中文场景加 [common/chinese-style.md](common/chinese-style.md) | `external/raw/superpowers-zh/skills/chinese-code-review/SKILL.md` |
-| 文本润色、去 AI 味、Humanizer | 无 | [common/humanizer.md](common/humanizer.md), 中文场景加 [common/chinese-style.md](common/chinese-style.md), 涉及事实核验加 [common/verification.md](common/verification.md) | `external/raw/humanizer/SKILL.md` |
-| 删除、移除、清理 | 按领域选择；Lite/Linux 对齐必须用 linux-alignment | [common/operating.md](common/operating.md), [common/verification.md](common/verification.md) | 按被删除对象所属领域选择 |
-| 测试设计或补测试 | 按领域选择 | [common/verification.md](common/verification.md), 可行时 [common/tdd.md](common/tdd.md) | `external/raw/superpowers-zh/skills/test-driven-development/SKILL.md` |
-| 分支收尾、提交前整理 | 无 | [common/finishing.md](common/finishing.md), [common/verification.md](common/verification.md), 中文提交加 [common/chinese-style.md](common/chinese-style.md) | `external/raw/superpowers-zh/skills/finishing-a-development-branch/SKILL.md`, `external/raw/superpowers-zh/skills/chinese-commit-conventions/SKILL.md` |
+| 任务类型 | 读取文件 |
+| --- | --- |
+| Kernel、Lite/Linux 对齐、storage/I/O、SCSI/NVMe/block/filesystem | [routes/kernel.md](routes/kernel.md) |
+| 通用开发、调试、review、文本润色、测试补充、收尾 | [routes/general.md](routes/general.md) |
+| ByteDance SSH、Prompt 工程、MCP、skill 工程维护、非内核性能 | [routes/tools.md](routes/tools.md) |
+
+## 固定叠加
+
+- 任何完成、修复、测试通过或审查结论：叠加 `common/verification.md`。
+- 中文输出、中文文档或中文审查：叠加 `common/chinese-style.md`。
+- 文档、说明、PR 描述、cover letter、报告或对外文案：叠加 `common/humanizer.md`。
+- 多阶段、多文件、多验证面的任务：叠加 `common/planning.md`。
+
+## Skill 工程维护
+
+- 后续所有 skill 相关修改都集中在本 workflow 工程管理。
+- 新能力默认先放入 `external/raw/<source>/` 或在 [external/catalog.md](external/catalog.md) 登记来源，再吸收到 `common/` 或 `specialized/`。
+- 不新增顶层独立 skill 入口，除非用户明确要求独立安装，或该 skill 属于 `.system/` 内置能力。
+- 修改路由、优先级、通用规则或专属规则后，同步更新 [external/catalog.md](external/catalog.md) 和必要的 README 说明。
 
 ## 输出要求
 
